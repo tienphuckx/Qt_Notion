@@ -1,0 +1,15 @@
+Dangling pointers in C can be likened to objects that hang freely in the air. As their name suggests, these pointers refer to memory locations that have been freed or deleted from the program's memory, making them invalid memory locations. In other words, they point to memory locations that are no longer in use.
+
+The concept of dynamic memory allocation is closely associated with the concept of dangling pointers. When we dynamically allocate memory using functions like malloc() and calloc(), we acquire memory blocks for our program's use. However, once we no longer need that memory, we must deallocate it using the free() function.
+
+The critical point to understand is that once we free a memory block using free(), any pointers pointing to that memory location become dangling pointers. These pointers now hold addresses to memory that are no longer reserved for our program, which can lead to unpredictable and erroneous behavior if accessed. It is crucial to handle memory allocation and deallocation carefully to avoid such issues and ensure we don't end up with dangling pointers lingering in our code!
+
+Here are some rules and guidelines to avoid and handle dangling pointers in C:
+
+Avoid Dereferencing Freed Pointers: After using the free() function to deallocate memory, refrain from accessing or dereferencing the pointer.
+NULL Initialization: Always initialize pointers to NULL when declaring them.
+Assigning Valid Addresses: Ensure that pointers point to valid memory addresses before dereferencing them. Assign them the address of an existing variable or a valid memory block obtained from functions like malloc() or calloc().
+Limited Pointer Lifetime: Be cautious with pointers that point to local variables within a function. When the function ends, the local variables go out of scope, creating dangling pointers in C programs.
+Scope Management: Minimize the scope of pointers as much as possible.
+Copy Pointers with Caution: Be mindful when copying pointers. If you copy a pointer, both the original pointer and the copy will point to the same memory location.
+Avoid Pointer Arithmetic: Be cautious when performing pointer arithmetic, as it can lead to accessing unintended or invalid memory.

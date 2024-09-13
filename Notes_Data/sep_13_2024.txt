@@ -1,0 +1,1 @@
+This implementation will display a countdown timer starting from 2:00 and update every second. When it reaches 0:00, the on_finishBtn_clicked() function is triggered. The timer is displayed in a label (timeLabel) which you should ensure is part of your UI.
